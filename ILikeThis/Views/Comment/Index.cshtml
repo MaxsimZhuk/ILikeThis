@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ILikeThis.Models.Comment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="form-group">
+    <textarea rows="10" cols="45" name="text"  id="1"></textarea>
+</div>
+    <button type="reset" onclick="PostTheComment(null)">Load</button>
+    <script>
+
+        window.onload = function Load() {
+            $.get("api/ApiComments", function (data) {
+
+                document.getElementById(0).innerHTML = " ";
+                var MyJson = JSON.parse(data);
+                document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<thead><tbody>";
+                for (var i = 0; i < 10; i++) {
+
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<th><div><b>" + MyJson[i].UserID + "</b></div>";
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<div>" + MyJson[i].Text + "</div> ";
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<a href=\"api/ApiLike/" + MyJson[i].Id + "\">Edit</a> | ";
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<a type=\"reset\" onclick=\"Like(" + MyJson[i].Id + ")\">Like</a> | </th > ";
+                }
+                document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "</tbody> </thead>";
+            });
+        }
+        function PostTheComment(Answer) {
+            var Text = document.getElementById(1).innerText;
+            $.post("api/ApiComments", Text,
+                function (value) {
+                    $().append('<li>' + Text + '</li>');
+                },
+                "json"
+            );
+        }
+        function Like(MyId) {
+            $.post("api/ApiComments/" + MyId, $().serialize(),
+                function (value) {
+                    $().append('<li>' + Text + '</li>');
+                },
+                "json"
+            );
+
+        }
+    </script>
+    <table class="table" id="0"></table>

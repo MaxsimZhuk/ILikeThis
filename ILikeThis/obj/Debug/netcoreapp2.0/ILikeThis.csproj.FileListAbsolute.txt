@@ -1,0 +1,12 @@
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\ILikeThis.csprojResolveAssemblyReference.cache
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\ILikeThis.csproj.CoreCompileInputs.cache
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\ILikeThis.AssemblyInfoInputs.cache
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\ILikeThis.AssemblyInfo.cs
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\bin\Debug\netcoreapp2.0\ILikeThis.deps.json
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\bin\Debug\netcoreapp2.0\ILikeThis.runtimeconfig.json
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\bin\Debug\netcoreapp2.0\ILikeThis.runtimeconfig.dev.json
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\bin\Debug\netcoreapp2.0\ILikeThis.dll
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\bin\Debug\netcoreapp2.0\ILikeThis.pdb
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\ILikeThis.dll
+c:\users\maxsi\source\repos\ILikeThis\ILikeThis\obj\Debug\netcoreapp2.0\ILikeThis.pdb

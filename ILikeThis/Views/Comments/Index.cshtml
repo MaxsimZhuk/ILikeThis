@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ILikeThis.Models.Comment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Forum</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<script>
+    window.onload = function Load2() {
+        Load();
+    }
+
+    function Load() {
+        $.get("api/ApiComments", function (data) {
+
+           /* document.getElementById(0).innerHTML = data;*/
+            document.getElementById(0).innerHTML = " ";
+            var MyJson = JSON.parse(data);
+            document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<thead><tbody>";
+            for (var i = 0; i < Object.keys(MyJson).length; i++) {
+                if (MyJson[i].Answer == 0) {
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<th><div><b>" + MyJson[i].UserID + "</b></div>";
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<div>" + MyJson[i].Text + "</div> ";
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<a href=\"/Comments/Edit/" + MyJson[i].Id + "\">Answer</a> | ";
+                    document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<a type=\"reset\" onclick=\"Like(" + MyJson[i].Id + ")\">Like(" + MyJson[i].Likes + ")</a> | </th > ";
+                    for (var j = 0; j < Object.keys(MyJson).length; j++) {
+                        if (MyJson[i].Id == MyJson[j].Answer) {
+
+                            document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "<div>" + MyJson[j].UserID + "    " + MyJson[j].Text + "</div> ";
+                            document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "|<a type=\"reset\" onclick=\"Like(" + MyJson[j].Id + ")\">Like(" + MyJson[j].Likes + ")</a>   ";
+                        }
+
+                    }
+                }
+            }
+            document.getElementById(0).innerHTML = document.getElementById(0).innerHTML + "</tbody> </thead>";
+        });
+    }
+
+    function PostTheComment(Answer) {
+        var Text = document.getElementById(1).innerText;
+        $.post("api/ApiComments", Text,
+            function (value) {
+                $().append('<li>' + Text + '</li>');
+            },
+            "json"
+            
+        );
+        setTimeout(Load(), 100);
+    }
+    function Like(MyId) {
+        $.post("api/ApiComments/" + MyId, $().serialize(),
+            function (value) {
+                $().append('<li>' + Text + '</li>');
+            },
+            "json"
+            
+        );
+        setTimeout(Load(), 100);
+    }
+</script>
+<table class="table" id="0"></table>
+<table class="table" id="1"></table>
